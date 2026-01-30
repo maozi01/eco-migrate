@@ -7,6 +7,7 @@ package migrate
 import (
 	"errors"
 	"fmt"
+	"io"
 	"os"
 	"sync"
 	"time"
@@ -742,7 +743,11 @@ func (m *Migrate) runMigrations(ret <-chan interface{}) error {
 			if migr.Body != nil {
 				m.logVerbosePrintf("Read and execute %v\n", migr.LogString())
 				if err := m.databaseDrv.Run(migr.BufferedBody); err != nil {
-					return err
+					rawName, erx := m.readAllAndClose(migr.Body)
+					if erx != nil {
+						return err
+					}
+					return fmt.Errorf(`%s %s`, string(rawName), err)
 				}
 			}
 
@@ -976,4 +981,9 @@ func (m *Migrate) logErr(err error) {
 	if m.Log != nil {
 		m.Log.Printf("error: %v", err)
 	}
+}
+
+func (m *Migrate) readAllAndClose(rc io.ReadCloser) ([]byte, error) {
+	defer rc.Close()
+	return io.ReadAll(rc)
 }
