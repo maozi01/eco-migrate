@@ -106,13 +106,13 @@ cockroach sql --insecure --host=localhost:26257 -e "show columns from example.us
 ```
 Expected output:
 ```
-  column_name |  data_type   | is_nullable | column_default | generation_expression |                   indices                    | is_hidden  
+  column_name |  data_type   | is_nullable | column_default | generation_expression |                   indices                    | is_hidden
 +-------------+--------------+-------------+----------------+-----------------------+----------------------------------------------+-----------+
-  user_id     | INT8         |    false    | NULL           |                       | {primary,users_username_key,users_email_key} |   false    
-  username    | VARCHAR(50)  |    false    | NULL           |                       | {users_username_key}                         |   false    
-  password    | VARCHAR(50)  |    false    | NULL           |                       | {}                                           |   false    
-  email       | VARCHAR(300) |    false    | NULL           |                       | {users_email_key}                            |   false    
-  mood        | STRING       |    true     | NULL           |                       | {}                                           |   false    
+  user_id     | INT8         |    false    | NULL           |                       | {primary,users_username_key,users_email_key} |   false
+  username    | VARCHAR(50)  |    false    | NULL           |                       | {users_username_key}                         |   false
+  password    | VARCHAR(50)  |    false    | NULL           |                       | {}                                           |   false
+  email       | VARCHAR(300) |    false    | NULL           |                       | {users_email_key}                            |   false
+  mood        | STRING       |    true     | NULL           |                       | {}                                           |   false
 (5 rows)
 ```
 
@@ -122,9 +122,9 @@ Here is a very simple app running migrations for the above configuration:
 import (
 	"log"
 
-	"github.com/golang-migrate/migrate/v4"
-	_ "github.com/golang-migrate/migrate/v4/database/cockroachdb"
-	_ "github.com/golang-migrate/migrate/v4/source/file"
+	"github.com/eco-migrate/migrate/v4"
+	_ "github.com/eco-migrate/migrate/v4/database/cockroachdb"
+	_ "github.com/eco-migrate/migrate/v4/source/file"
 )
 
 func main() {

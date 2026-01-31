@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/golang-migrate/migrate/v4/source"
+	"github.com/eco-migrate/migrate/v4/source"
 	"github.com/xanzy/go-gitlab"
 )
 
@@ -130,7 +130,7 @@ func (g *Gitlab) readDirectory() error {
 		if response.CurrentPage >= response.TotalPages {
 			break
 		}
-		g.listOptions.Page = response.NextPage
+		g.listOptions.ListOptions.Page = response.NextPage
 	}
 
 	for i := range nodes {

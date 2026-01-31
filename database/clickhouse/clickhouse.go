@@ -11,9 +11,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/golang-migrate/migrate/v4"
-	"github.com/golang-migrate/migrate/v4/database"
-	"github.com/golang-migrate/migrate/v4/database/multistmt"
+	"github.com/eco-migrate/migrate/v4"
+	"github.com/eco-migrate/migrate/v4/database"
+	"github.com/eco-migrate/migrate/v4/database/multistmt"
 )
 
 var (
@@ -307,5 +307,5 @@ func quoteIdentifier(name string) string {
 	if end > -1 {
 		name = name[:end]
 	}
-	return `"` + strings.ReplaceAll(name, `"`, `""`) + `"`
+	return `"` + strings.Replace(name, `"`, `""`, -1) + `"`
 }

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/golang-migrate/migrate/v4/source"
+	"github.com/eco-migrate/migrate/v4/source"
 )
 
 // driver is a migration source driver for reading migrations from
@@ -27,5 +27,5 @@ func New(fs http.FileSystem, path string) (source.Driver, error) {
 // Open completes the implementetion of source.Driver interface. Other methods
 // are implemented by the embedded PartialDriver struct.
 func (d *driver) Open(url string) (source.Driver, error) {
-	return nil, errors.New("open() cannot be called on the httpfs passthrough driver")
+	return nil, errors.New("Open() cannot be called on the httpfs passthrough driver")
 }

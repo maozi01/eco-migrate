@@ -49,7 +49,7 @@ Let's check if the table was created properly by running `psql example -c "\d us
 The output you are supposed to see:
 ```
                                     Table "public.users"
-  Column  |          Type          |                        Modifiers                        
+  Column  |          Type          |                        Modifiers
 ----------+------------------------+---------------------------------------------------------
  user_id  | integer                | not null default nextval('users_user_id_seq'::regclass)
  username | character varying(50)  | not null
@@ -109,13 +109,13 @@ psql example -c "\d users"
 Expected output:
 ```
                                     Table "public.users"
-  Column  |          Type          |                        Modifiers                        
+  Column  |          Type          |                        Modifiers
 ----------+------------------------+---------------------------------------------------------
  user_id  | integer                | not null default nextval('users_user_id_seq'::regclass)
  username | character varying(50)  | not null
  password | character varying(50)  | not null
  email    | character varying(300) | not null
- mood     | enum_mood              | 
+ mood     | enum_mood              |
 Indexes:
     "users_pkey" PRIMARY KEY, btree (user_id)
     "users_email_key" UNIQUE CONSTRAINT, btree (email)
@@ -128,9 +128,9 @@ Here is a very simple app running migrations for the above configuration:
 import (
 	"log"
 
-	"github.com/golang-migrate/migrate/v4"
-	_ "github.com/golang-migrate/migrate/v4/database/postgres"
-	_ "github.com/golang-migrate/migrate/v4/source/file"
+	"github.com/eco-migrate/migrate/v4"
+	_ "github.com/eco-migrate/migrate/v4/database/postgres"
+	_ "github.com/eco-migrate/migrate/v4/source/file"
 )
 
 func main() {

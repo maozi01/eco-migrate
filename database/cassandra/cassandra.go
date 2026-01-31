@@ -10,9 +10,9 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/eco-migrate/migrate/v4/database"
+	"github.com/eco-migrate/migrate/v4/database/multistmt"
 	"github.com/gocql/gocql"
-	"github.com/golang-migrate/migrate/v4/database"
-	"github.com/golang-migrate/migrate/v4/database/multistmt"
 )
 
 func init() {
@@ -259,7 +259,7 @@ func (c *Cassandra) SetVersion(version int, dirty bool) error {
 
 	// Also re-write the schema version for nil dirty versions to prevent
 	// empty schema version for failed down migration on the first migration
-	// See: https://github.com/golang-migrate/migrate/issues/330
+	// See: https://github.com/eco-migrate/migrate/v4/issues/330
 	if version >= 0 || (version == database.NilVersion && dirty) {
 		query := `INSERT INTO "` + c.config.MigrationsTable + `" (version, dirty) VALUES (?, ?)`
 		if err := c.session.Query(query, version, dirty).Exec(); err != nil {
@@ -336,7 +336,7 @@ func parseConsistency(consistencyStr string) (consistency gocql.Consistency, err
 			var ok bool
 			err, ok = r.(error)
 			if !ok {
-				err = fmt.Errorf("failed to parse consistency \"%s\": %v", consistencyStr, r)
+				err = fmt.Errorf("Failed to parse consistency \"%s\": %v", consistencyStr, r)
 			}
 		}
 	}()

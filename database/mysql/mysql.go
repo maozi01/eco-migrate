@@ -18,7 +18,7 @@ import (
 	"time"
 
 	"github.com/go-sql-driver/mysql"
-	"github.com/golang-migrate/migrate/v4/database"
+	"github.com/eco-migrate/migrate/v4/database"
 )
 
 var _ database.Driver = (*Mysql)(nil) // explicit compile time type check
@@ -34,7 +34,7 @@ var (
 	ErrNilConfig        = fmt.Errorf("no config")
 	ErrNoDatabaseName   = fmt.Errorf("no database name")
 	ErrAppendPEM        = fmt.Errorf("failed to append PEM")
-	ErrTLSCertKeyConfig = fmt.Errorf("to use TLS client authentication, both x-tls-cert and x-tls-key must not be empty")
+	ErrTLSCertKeyConfig = fmt.Errorf("To use TLS client authentication, both x-tls-cert and x-tls-key must not be empty")
 )
 
 type Config struct {
@@ -139,7 +139,7 @@ func urlToMySQLConfig(url string) (*mysql.Config, error) {
 	// Need to parse out custom TLS parameters and call
 	// mysql.RegisterTLSConfig() before mysql.ParseDSN() is called
 	// which consumes the registered tls.Config
-	// Fixes: https://github.com/golang-migrate/migrate/issues/411
+	// Fixes: https://github.com/eco-migrate/migrate/v4/issues/411
 	//
 	// Can't use url.Parse() since it fails to parse MySQL DSNs
 	// mysql.ParseDSN() also searches for "?" to find query parameters:
@@ -369,7 +369,7 @@ func (m *Mysql) SetVersion(version int, dirty bool) error {
 
 	// Also re-write the schema version for nil dirty versions to prevent
 	// empty schema version for failed down migration on the first migration
-	// See: https://github.com/golang-migrate/migrate/issues/330
+	// See: https://github.com/eco-migrate/migrate/v4/issues/330
 	if version >= 0 || (version == database.NilVersion && dirty) {
 		query := "INSERT INTO `" + m.config.MigrationsTable + "` (version, dirty) VALUES (?, ?)"
 		if _, err := tx.ExecContext(context.Background(), query, version, dirty); err != nil {

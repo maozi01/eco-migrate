@@ -13,8 +13,8 @@ import (
 	"strings"
 	"sync/atomic"
 
-	"github.com/golang-migrate/migrate/v4"
-	"github.com/golang-migrate/migrate/v4/database"
+	"github.com/eco-migrate/migrate/v4"
+	"github.com/eco-migrate/migrate/v4/database"
 	"github.com/lib/pq"
 )
 
@@ -174,7 +174,7 @@ func (p *Redshift) Run(migration io.Reader) error {
 
 func computeLineFromPos(s string, pos int) (line uint, col uint, ok bool) {
 	// replace crlf with lf
-	s = strings.ReplaceAll(s, "\r\n", "\n")
+	s = strings.Replace(s, "\r\n", "\n", -1)
 	// pg docs: pos uses index 1 for the first character, and positions are measured in characters not bytes
 	runes := []rune(s)
 	if pos > len(runes) {
@@ -223,7 +223,7 @@ func (p *Redshift) SetVersion(version int, dirty bool) error {
 
 	// Also re-write the schema version for nil dirty versions to prevent
 	// empty schema version for failed down migration on the first migration
-	// See: https://github.com/golang-migrate/migrate/issues/330
+	// See: https://github.com/eco-migrate/migrate/v4/issues/330
 	if version >= 0 || (version == database.NilVersion && dirty) {
 		query = `INSERT INTO "` + p.config.MigrationsTable + `" (version, dirty) VALUES ($1, $2)`
 		if _, err := tx.Exec(query, version, dirty); err != nil {

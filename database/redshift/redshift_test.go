@@ -10,22 +10,19 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/golang-migrate/migrate/v4"
 	"io"
 	"strconv"
 	"strings"
 	"testing"
-)
 
-import (
 	"github.com/dhui/dktest"
-)
+	"github.com/eco-migrate/migrate/v4"
+	"github.com/eco-migrate/migrate/v4/database"
+	"github.com/eco-migrate/migrate/v4/dktesting"
 
-import (
-	"github.com/golang-migrate/migrate/v4/database"
-	dt "github.com/golang-migrate/migrate/v4/database/testing"
-	"github.com/golang-migrate/migrate/v4/dktesting"
-	_ "github.com/golang-migrate/migrate/v4/source/file"
+	dt "github.com/eco-migrate/migrate/v4/database/testing"
+
+	_ "github.com/eco-migrate/migrate/v4/source/file"
 )
 
 const (
@@ -378,10 +375,10 @@ func Test_computeLineFromPos(t *testing.T) {
 				t.Run(name, func(t *testing.T) {
 					input := tc.input
 					if crlf {
-						input = strings.ReplaceAll(input, "\n", "\r\n")
+						input = strings.Replace(input, "\n", "\r\n", -1)
 					}
 					if nonASCII {
-						input = strings.ReplaceAll(input, "FROM", "FRÖM")
+						input = strings.Replace(input, "FROM", "FRÖM", -1)
 					}
 					gotLine, gotCol, gotOK := computeLineFromPos(input, tc.pos)
 

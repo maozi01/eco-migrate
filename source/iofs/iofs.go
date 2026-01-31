@@ -10,7 +10,7 @@ import (
 	"path"
 	"strconv"
 
-	"github.com/golang-migrate/migrate/v4/source"
+	"github.com/eco-migrate/migrate/v4/source"
 )
 
 type driver struct {
@@ -29,7 +29,7 @@ func New(fsys fs.FS, path string) (source.Driver, error) {
 // Open is part of source.Driver interface implementation.
 // Open cannot be called on the iofs passthrough driver.
 func (d *driver) Open(url string) (source.Driver, error) {
-	return nil, errors.New("open() cannot be called on the iofs passthrough driver")
+	return nil, errors.New("Open() cannot be called on the iofs passthrough driver")
 }
 
 // PartialDriver is a helper service for creating new source drivers working with

@@ -13,9 +13,9 @@ cd examples/migrations && go-bindata -pkg migrations .
 
 ```go
 import (
-  "github.com/golang-migrate/migrate/v4"
-  "github.com/golang-migrate/migrate/v4/source/go_bindata"
-  "github.com/golang-migrate/migrate/v4/source/go_bindata/examples/migrations"
+  "github.com/eco-migrate/migrate/v4"
+  "github.com/eco-migrate/migrate/v4/source/go_bindata"
+  "github.com/eco-migrate/migrate/v4/source/go_bindata/examples/migrations"
 )
 
 func main() {
@@ -24,7 +24,7 @@ func main() {
     func(name string) ([]byte, error) {
       return migrations.Asset(name)
     })
-    
+
   d, err := bindata.WithInstance(s)
   m, err := migrate.NewWithSourceInstance("go-bindata", d, "database://foobar")
   m.Up() // run your migrations and handle the errors above of course
@@ -39,5 +39,3 @@ proxy to source/file. go-bindata must be in your `$PATH`.
 ```
 migrate -source go-bindata://examples/migrations/bindata.go
 ```
-
-

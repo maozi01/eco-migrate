@@ -12,8 +12,8 @@ import (
 	"sync/atomic"
 
 	"github.com/Azure/go-autorest/autorest/adal"
-	"github.com/golang-migrate/migrate/v4"
-	"github.com/golang-migrate/migrate/v4/database"
+	"github.com/eco-migrate/migrate/v4"
+	"github.com/eco-migrate/migrate/v4/database"
 	mssql "github.com/microsoft/go-mssqldb" // mssql support
 )
 
@@ -29,7 +29,7 @@ var (
 	ErrNoDatabaseName            = fmt.Errorf("no database name")
 	ErrNoSchema                  = fmt.Errorf("no schema")
 	ErrDatabaseDirty             = fmt.Errorf("database is dirty")
-	ErrMultipleAuthOptionsPassed = fmt.Errorf("both password and useMsi=true were passed")
+	ErrMultipleAuthOptionsPassed = fmt.Errorf("both password and useMsi=true were passed.")
 )
 
 var lockErrorMap = map[int]string{
@@ -278,7 +278,7 @@ func (ss *SQLServer) SetVersion(version int, dirty bool) error {
 
 	// Also re-write the schema version for nil dirty versions to prevent
 	// empty schema version for failed down migration on the first migration
-	// See: https://github.com/golang-migrate/migrate/issues/330
+	// See: https://github.com/eco-migrate/migrate/v4/issues/330
 	if version >= 0 || (version == database.NilVersion && dirty) {
 		var dirtyBit int
 		if dirty {

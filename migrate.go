@@ -12,9 +12,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/golang-migrate/migrate/v4/database"
-	iurl "github.com/golang-migrate/migrate/v4/internal/url"
-	"github.com/golang-migrate/migrate/v4/source"
+	"github.com/eco-migrate/migrate/v4/database"
+	iurl "github.com/eco-migrate/migrate/v4/internal/url"
+	"github.com/eco-migrate/migrate/v4/source"
 )
 
 // DefaultPrefetchMigrations sets the number of migrations to pre-read
@@ -747,7 +747,7 @@ func (m *Migrate) runMigrations(ret <-chan interface{}) error {
 					if erx != nil {
 						return err
 					}
-					return fmt.Errorf(`%s %s`, string(rawName), err)
+					return fmt.Errorf(`%s %s`, rawName, err)
 				}
 			}
 
@@ -774,6 +774,19 @@ func (m *Migrate) runMigrations(ret <-chan interface{}) error {
 		}
 	}
 	return nil
+}
+
+func (m *Migrate) readAllAndClose(rc io.ReadCloser) (string, error) {
+	data, err := io.ReadAll(rc)
+	defer func() {
+		if err := rc.Close(); err != nil {
+			m.logPrintf("close readcloser failed: %v", err)
+		}
+	}()
+	if err != nil {
+		return "", err
+	}
+	return string(data), nil
 }
 
 // versionExists checks the source if either the up or down migration for
@@ -981,9 +994,4 @@ func (m *Migrate) logErr(err error) {
 	if m.Log != nil {
 		m.Log.Printf("error: %v", err)
 	}
-}
-
-func (m *Migrate) readAllAndClose(rc io.ReadCloser) ([]byte, error) {
-	defer rc.Close()
-	return io.ReadAll(rc)
 }

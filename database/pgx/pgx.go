@@ -15,9 +15,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/golang-migrate/migrate/v4"
-	"github.com/golang-migrate/migrate/v4/database"
-	"github.com/golang-migrate/migrate/v4/database/multistmt"
+	"github.com/eco-migrate/migrate/v4"
+	"github.com/eco-migrate/migrate/v4/database"
+	"github.com/eco-migrate/migrate/v4/database/multistmt"
 	"github.com/jackc/pgconn"
 	"github.com/jackc/pgerrcode"
 	_ "github.com/jackc/pgx/v4/stdlib"
@@ -181,7 +181,7 @@ func (p *Postgres) Open(url string) (database.Driver, error) {
 	if s := purl.Query().Get("x-migrations-table-quoted"); len(s) > 0 {
 		migrationsTableQuoted, err = strconv.ParseBool(s)
 		if err != nil {
-			return nil, fmt.Errorf("unable to parse option x-migrations-table-quoted: %w", err)
+			return nil, fmt.Errorf("Unable to parse option x-migrations-table-quoted: %w", err)
 		}
 	}
 	if (len(migrationsTable) > 0) && (migrationsTableQuoted) && ((migrationsTable[0] != '"') || (migrationsTable[len(migrationsTable)-1] != '"')) {
@@ -212,7 +212,7 @@ func (p *Postgres) Open(url string) (database.Driver, error) {
 	if s := purl.Query().Get("x-multi-statement"); len(s) > 0 {
 		multiStatementEnabled, err = strconv.ParseBool(s)
 		if err != nil {
-			return nil, fmt.Errorf("unable to parse option x-multi-statement: %w", err)
+			return nil, fmt.Errorf("Unable to parse option x-multi-statement: %w", err)
 		}
 	}
 
@@ -412,7 +412,7 @@ func (p *Postgres) runStatement(statement []byte) error {
 
 func computeLineFromPos(s string, pos int) (line uint, col uint, ok bool) {
 	// replace crlf with lf
-	s = strings.ReplaceAll(s, "\r\n", "\n")
+	s = strings.Replace(s, "\r\n", "\n", -1)
 	// pg docs: pos uses index 1 for the first character, and positions are measured in characters not bytes
 	runes := []rune(s)
 	if pos > len(runes) {
@@ -461,7 +461,7 @@ func (p *Postgres) SetVersion(version int, dirty bool) error {
 
 	// Also re-write the schema version for nil dirty versions to prevent
 	// empty schema version for failed down migration on the first migration
-	// See: https://github.com/golang-migrate/migrate/issues/330
+	// See: https://github.com/eco-migrate/migrate/v4/issues/330
 	if version >= 0 || (version == database.NilVersion && dirty) {
 		query = `INSERT INTO ` + quoteIdentifier(p.config.migrationsSchemaName) + `.` + quoteIdentifier(p.config.migrationsTableName) + ` (version, dirty) VALUES ($1, $2)`
 		if _, err := tx.Exec(query, version, dirty); err != nil {
@@ -613,5 +613,5 @@ func quoteIdentifier(name string) string {
 	if end > -1 {
 		name = name[:end]
 	}
-	return `"` + strings.ReplaceAll(name, `"`, `""`) + `"`
+	return `"` + strings.Replace(name, `"`, `""`, -1) + `"`
 }
