@@ -778,7 +778,11 @@ func (m *Migrate) runMigrations(ret <-chan interface{}) error {
 
 func (m *Migrate) readAllAndClose(rc io.ReadCloser) (string, error) {
 	data, err := io.ReadAll(rc)
-	defer rc.Close()
+	defer func() {
+		if err := rc.Close(); err != nil {
+			m.logPrintf("close readcloser failed: %v", err)
+		}
+	}()
 	if err != nil {
 		return "", err
 	}
