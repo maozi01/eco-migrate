@@ -1,6 +1,6 @@
 module github.com/eco-migrate/migrate/v4
 
-go 1.25
+go 1.24.0
 
 require (
 	cloud.google.com/go/spanner v1.85.1
