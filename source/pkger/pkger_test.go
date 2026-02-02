@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/gobuffalo/here"
 	st "github.com/eco-migrate/migrate/v4/source/testing"
+	"github.com/gobuffalo/here"
 	"github.com/markbates/pkger"
 	"github.com/markbates/pkger/pkging"
 	"github.com/markbates/pkger/pkging/mem"

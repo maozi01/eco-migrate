@@ -17,8 +17,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/go-sql-driver/mysql"
 	"github.com/eco-migrate/migrate/v4/database"
+	"github.com/go-sql-driver/mysql"
 )
 
 var _ database.Driver = (*Mysql)(nil) // explicit compile time type check
