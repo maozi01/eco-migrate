@@ -3,5 +3,5 @@
 package cli
 
 import (
-	_ "github.com/eco-migrate/migrate/v4/source/github_ee"
+	_ "github.com/maozi01/eco-migrate/source/github_ee"
 )

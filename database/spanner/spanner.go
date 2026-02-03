@@ -16,8 +16,8 @@ import (
 	sdb "cloud.google.com/go/spanner/admin/database/apiv1"
 	"cloud.google.com/go/spanner/spansql"
 
-	"github.com/eco-migrate/migrate/v4"
-	"github.com/eco-migrate/migrate/v4/database"
+	migrate "github.com/maozi01/eco-migrate"
+	"github.com/maozi01/eco-migrate/database"
 
 	adminpb "cloud.google.com/go/spanner/admin/database/apiv1/databasepb"
 	"google.golang.org/api/iterator"

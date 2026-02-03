@@ -5,8 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/eco-migrate/migrate/v4/source"
-	"github.com/eco-migrate/migrate/v4/source/iofs"
+	"github.com/maozi01/eco-migrate/source"
+	"github.com/maozi01/eco-migrate/source/iofs"
 )
 
 func init() {

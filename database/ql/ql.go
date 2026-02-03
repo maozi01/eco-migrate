@@ -9,8 +9,8 @@ import (
 	"strings"
 	"sync/atomic"
 
-	"github.com/eco-migrate/migrate/v4"
-	"github.com/eco-migrate/migrate/v4/database"
+	migrate "github.com/maozi01/eco-migrate"
+	"github.com/maozi01/eco-migrate/database"
 	_ "modernc.org/ql/driver"
 )
 
@@ -210,7 +210,7 @@ func (m *Ql) SetVersion(version int, dirty bool) error {
 
 	// Also re-write the schema version for nil dirty versions to prevent
 	// empty schema version for failed down migration on the first migration
-	// See: https://github.com/eco-migrate/migrate/v4/issues/330
+	// See: https://github.com/maozi01/eco-migratesues/330
 	if version >= 0 || (version == database.NilVersion && dirty) {
 		query := fmt.Sprintf(`INSERT INTO %s (version, dirty) VALUES (uint64(?1), ?2)`,
 			m.config.MigrationsTable)

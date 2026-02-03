@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/eco-migrate/migrate/v4/source/httpfs"
-	st "github.com/eco-migrate/migrate/v4/source/testing"
+	"github.com/maozi01/eco-migrate/source/httpfs"
+	st "github.com/maozi01/eco-migrate/source/testing"
 )
 
 func TestNewOK(t *testing.T) {

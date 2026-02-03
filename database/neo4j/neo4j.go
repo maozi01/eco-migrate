@@ -9,8 +9,8 @@ import (
 	"strconv"
 	"sync/atomic"
 
-	"github.com/eco-migrate/migrate/v4/database"
-	"github.com/eco-migrate/migrate/v4/database/multistmt"
+	"github.com/maozi01/eco-migrate/database"
+	"github.com/maozi01/eco-migrate/database/multistmt"
 	"github.com/neo4j/neo4j-go-driver/neo4j"
 )
 

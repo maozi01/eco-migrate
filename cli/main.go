@@ -1,6 +1,6 @@
 package main
 
-import "github.com/eco-migrate/migrate/v4/internal/cli"
+import "github.com/maozi01/eco-migrate/internal/cli"
 
 // Deprecated, please use cmd/migrate
 func main() {

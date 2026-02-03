@@ -11,9 +11,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/eco-migrate/migrate/v4"
-	"github.com/eco-migrate/migrate/v4/database"
-	"github.com/eco-migrate/migrate/v4/database/multistmt"
+	migrate "github.com/maozi01/eco-migrate"
+	"github.com/maozi01/eco-migrate/database"
+	"github.com/maozi01/eco-migrate/database/multistmt"
 )
 
 var (

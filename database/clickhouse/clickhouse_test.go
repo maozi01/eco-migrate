@@ -10,11 +10,11 @@ import (
 
 	_ "github.com/ClickHouse/clickhouse-go"
 	"github.com/dhui/dktest"
-	"github.com/eco-migrate/migrate/v4"
-	"github.com/eco-migrate/migrate/v4/database/clickhouse"
-	dt "github.com/eco-migrate/migrate/v4/database/testing"
-	"github.com/eco-migrate/migrate/v4/dktesting"
-	_ "github.com/eco-migrate/migrate/v4/source/file"
+	migrate "github.com/maozi01/eco-migrate"
+	"github.com/maozi01/eco-migrate/database/clickhouse"
+	dt "github.com/maozi01/eco-migrate/database/testing"
+	"github.com/maozi01/eco-migrate/dktesting"
+	_ "github.com/maozi01/eco-migrate/source/file"
 )
 
 const defaultPort = 9000

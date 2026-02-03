@@ -12,9 +12,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/eco-migrate/migrate/v4/database"
-	iurl "github.com/eco-migrate/migrate/v4/internal/url"
-	"github.com/eco-migrate/migrate/v4/source"
+	"github.com/maozi01/eco-migrate/database"
+	iurl "github.com/maozi01/eco-migrate/internal/url"
+	"github.com/maozi01/eco-migrate/source"
 )
 
 // DefaultPrefetchMigrations sets the number of migrations to pre-read

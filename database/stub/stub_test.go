@@ -3,11 +3,11 @@ package stub
 import (
 	"testing"
 
-	"github.com/eco-migrate/migrate/v4"
-	"github.com/eco-migrate/migrate/v4/source"
-	"github.com/eco-migrate/migrate/v4/source/stub"
+	migrate "github.com/maozi01/eco-migrate"
+	"github.com/maozi01/eco-migrate/source"
+	"github.com/maozi01/eco-migrate/source/stub"
 
-	dt "github.com/eco-migrate/migrate/v4/database/testing"
+	dt "github.com/maozi01/eco-migrate/database/testing"
 )
 
 func Test(t *testing.T) {

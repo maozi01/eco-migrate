@@ -9,8 +9,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/eco-migrate/migrate/v4/source"
 	"github.com/ktrysmt/go-bitbucket"
+	"github.com/maozi01/eco-migrate/source"
 )
 
 func init() {
@@ -53,7 +53,7 @@ func (b *Bitbucket) Open(url string) (source.Driver, error) {
 		return nil, ErrNoAccessToken
 	}
 
-	cl := bitbucket.NewBasicAuth(u.User.Username(), password)
+	cl, _ := bitbucket.NewBasicAuth(u.User.Username(), password)
 
 	cfg := &Config{}
 	// set owner, repo and path in repo

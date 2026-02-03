@@ -4,5 +4,5 @@ package cli
 
 import (
 	_ "github.com/ClickHouse/clickhouse-go"
-	_ "github.com/eco-migrate/migrate/v4/database/clickhouse"
+	_ "github.com/maozi01/eco-migrate/database/clickhouse"
 )

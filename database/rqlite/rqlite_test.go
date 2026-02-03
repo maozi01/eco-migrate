@@ -12,10 +12,10 @@ import (
 	"github.com/rqlite/gorqlite"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/eco-migrate/migrate/v4"
-	dt "github.com/eco-migrate/migrate/v4/database/testing"
-	"github.com/eco-migrate/migrate/v4/dktesting"
-	_ "github.com/eco-migrate/migrate/v4/source/file"
+	migrate "github.com/maozi01/eco-migrate"
+	dt "github.com/maozi01/eco-migrate/database/testing"
+	"github.com/maozi01/eco-migrate/dktesting"
+	_ "github.com/maozi01/eco-migrate/source/file"
 )
 
 var defaultPort uint16 = 4001

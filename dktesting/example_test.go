@@ -10,7 +10,7 @@ import (
 )
 
 import (
-	"github.com/eco-migrate/migrate/v4/dktesting"
+	"github.com/maozi01/eco-migrate/dktesting"
 )
 
 func ExampleParallelTest() {

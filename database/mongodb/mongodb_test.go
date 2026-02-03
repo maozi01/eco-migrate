@@ -14,15 +14,15 @@ import (
 	"time"
 
 	"github.com/dhui/dktest"
-	"github.com/eco-migrate/migrate/v4"
-	"github.com/eco-migrate/migrate/v4/dktesting"
+	migrate "github.com/maozi01/eco-migrate"
+	"github.com/maozi01/eco-migrate/dktesting"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	dt "github.com/eco-migrate/migrate/v4/database/testing"
+	dt "github.com/maozi01/eco-migrate/database/testing"
 
-	_ "github.com/eco-migrate/migrate/v4/source/file"
+	_ "github.com/maozi01/eco-migrate/source/file"
 )
 
 var (
