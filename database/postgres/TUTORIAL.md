@@ -128,9 +128,9 @@ Here is a very simple app running migrations for the above configuration:
 import (
 	"log"
 
-	"github.com/eco-migrate/migrate/v4"
-	_ "github.com/eco-migrate/migrate/v4/database/postgres"
-	_ "github.com/eco-migrate/migrate/v4/source/file"
+	"github.com/maozi01/eco-migrate"
+	_ "github.com/maozi01/eco-migrate/database/postgres"
+	_ "github.com/maozi01/eco-migrate/source/file"
 )
 
 func main() {

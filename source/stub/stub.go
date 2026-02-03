@@ -6,7 +6,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/eco-migrate/migrate/v4/source"
+	"github.com/maozi01/eco-migrate/source"
 )
 
 func init() {

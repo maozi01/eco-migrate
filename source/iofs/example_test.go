@@ -6,9 +6,9 @@ import (
 	"embed"
 	"log"
 
-	"github.com/eco-migrate/migrate/v4"
-	_ "github.com/eco-migrate/migrate/v4/database/postgres"
-	"github.com/eco-migrate/migrate/v4/source/iofs"
+	migrate "github.com/maozi01/eco-migrate"
+	_ "github.com/maozi01/eco-migrate/database/postgres"
+	"github.com/maozi01/eco-migrate/source/iofs"
 )
 
 //go:embed testdata/migrations/*.sql

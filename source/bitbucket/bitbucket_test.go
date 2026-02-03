@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	st "github.com/eco-migrate/migrate/v4/source/testing"
+	st "github.com/maozi01/eco-migrate/source/testing"
 )
 
 var BitbucketTestSecret = "" // username:password

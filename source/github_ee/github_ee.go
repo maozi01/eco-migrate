@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/eco-migrate/migrate/v4/source"
-	gh "github.com/eco-migrate/migrate/v4/source/github"
+	"github.com/maozi01/eco-migrate/source"
+	gh "github.com/maozi01/eco-migrate/source/github"
 
 	"github.com/google/go-github/v39/github"
 )

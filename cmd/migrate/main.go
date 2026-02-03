@@ -1,6 +1,6 @@
 package main
 
-import "github.com/eco-migrate/migrate/v4/internal/cli"
+import "github.com/maozi01/eco-migrate/internal/cli"
 
 func main() {
 	cli.Main(Version)

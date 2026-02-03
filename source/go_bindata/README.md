@@ -13,9 +13,9 @@ cd examples/migrations && go-bindata -pkg migrations .
 
 ```go
 import (
-  "github.com/eco-migrate/migrate/v4"
-  "github.com/eco-migrate/migrate/v4/source/go_bindata"
-  "github.com/eco-migrate/migrate/v4/source/go_bindata/examples/migrations"
+  "github.com/maozi01/eco-migrate"
+  "github.com/maozi01/eco-migrate/source/go_bindata"
+  "github.com/maozi01/eco-migrate/source/go_bindata/examples/migrations"
 )
 
 func main() {

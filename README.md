@@ -1,11 +1,11 @@
-[![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/golang-migrate/migrate/ci.yaml?branch=master)](https://github.com/eco-migrate/migrate/v4/actions/workflows/ci.yaml?query=branch%3Amaster)
-[![GoDoc](https://pkg.go.dev/badge/github.com/eco-migrate/migrate/v4)](https://pkg.go.dev/github.com/eco-migrate/migrate/v4)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/golang-migrate/migrate/ci.yaml?branch=master)](https://github.com/maozi01/eco-migrate/actions/workflows/ci.yaml?query=branch%3Amaster)
+[![GoDoc](https://pkg.go.dev/badge/github.com/maozi01/eco-migrate)](https://pkg.go.dev/github.com/maozi01/eco-migrate)
 [![Coverage Status](https://img.shields.io/coveralls/github/golang-migrate/migrate/master.svg)](https://coveralls.io/github/golang-migrate/migrate?branch=master)
 [![packagecloud.io](https://img.shields.io/badge/deb-packagecloud.io-844fec.svg)](https://packagecloud.io/golang-migrate/migrate?filter=debs)
 [![Docker Pulls](https://img.shields.io/docker/pulls/migrate/migrate.svg)](https://hub.docker.com/r/migrate/migrate/)
 ![Supported Go Versions](https://img.shields.io/badge/Go-1.24%2C%201.25-lightgrey.svg)
-[![GitHub Release](https://img.shields.io/github/release/golang-migrate/migrate.svg)](https://github.com/eco-migrate/migrate/v4/releases)
-[![Go Report Card](https://goreportcard.com/badge/github.com/eco-migrate/migrate/v4)](https://goreportcard.com/report/github.com/eco-migrate/migrate/v4)
+[![GitHub Release](https://img.shields.io/github/release/golang-migrate/migrate.svg)](https://github.com/maozi01/eco-migrate/releases)
+[![Go Report Card](https://goreportcard.com/badge/github.com/maozi01/eco-migrate)](https://goreportcard.com/report/github.com/maozi01/eco-migrate)
 
 # migrate
 
@@ -111,13 +111,13 @@ $ docker run -v {{ migration dir }}:/migrations --network host migrate/migrate
 * Uses `io.Reader` streams internally for low memory overhead.
 * Thread-safe and no goroutine leaks.
 
-__[Go Documentation](https://pkg.go.dev/github.com/eco-migrate/migrate/v4)__
+__[Go Documentation](https://pkg.go.dev/github.com/maozi01/eco-migrate)__
 
 ```go
 import (
-    "github.com/eco-migrate/migrate/v4"
-    _ "github.com/eco-migrate/migrate/v4/database/postgres"
-    _ "github.com/eco-migrate/migrate/v4/source/github"
+    "github.com/maozi01/eco-migrate"
+    _ "github.com/maozi01/eco-migrate/database/postgres"
+    _ "github.com/maozi01/eco-migrate/source/github"
 )
 
 func main() {
@@ -134,9 +134,9 @@ Want to use an existing database client?
 import (
     "database/sql"
     _ "github.com/lib/pq"
-    "github.com/eco-migrate/migrate/v4"
-    "github.com/eco-migrate/migrate/v4/database/postgres"
-    _ "github.com/eco-migrate/migrate/v4/source/file"
+    "github.com/maozi01/eco-migrate"
+    "github.com/maozi01/eco-migrate/database/postgres"
+    _ "github.com/maozi01/eco-migrate/source/file"
 )
 
 func main() {
@@ -178,11 +178,11 @@ Check out [migradaptor](https://github.com/musinit/migradaptor/).
 
 ## Versions
 
-| Version    | Supported?         | Import                                                                                                                                 | Notes                                        |
-| ---------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| **master** | :white_check_mark: | `import "github.com/eco-migrate/migrate/v4"`                                                                                           | New features and bug fixes arrive here first |
-| **v4**     | :white_check_mark: | `import "github.com/eco-migrate/migrate/v4"`                                                                                           | Used for stable releases                     |
-| **v3**     | :x:                | `import "github.com/eco-migrate/migrate/v4"` (with package manager) or `import "gopkg.in/golang-migrate/migrate.v3"` (not recommended) | **DO NOT USE** - No longer supported         |
+| Version    | Supported?         | Import                                                                                                                              | Notes                                        |
+| ---------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| **master** | :white_check_mark: | `import "github.com/maozi01/eco-migrate"`                                                                                           | New features and bug fixes arrive here first |
+| **v4**     | :white_check_mark: | `import "github.com/maozi01/eco-migrate"`                                                                                           | Used for stable releases                     |
+| **v3**     | :x:                | `import "github.com/maozi01/eco-migrate"` (with package manager) or `import "gopkg.in/golang-migrate/migrate.v3"` (not recommended) | **DO NOT USE** - No longer supported         |
 
 ## Development and Contributing
 

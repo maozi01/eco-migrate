@@ -16,12 +16,12 @@ import (
 	"testing"
 
 	"github.com/dhui/dktest"
-	"github.com/eco-migrate/migrate/v4"
-	"github.com/eco-migrate/migrate/v4/database"
-	"github.com/eco-migrate/migrate/v4/dktesting"
+	migrate "github.com/maozi01/eco-migrate"
+	"github.com/maozi01/eco-migrate/database"
+	"github.com/maozi01/eco-migrate/dktesting"
 
-	dt "github.com/eco-migrate/migrate/v4/database/testing"
-	_ "github.com/eco-migrate/migrate/v4/source/file"
+	dt "github.com/maozi01/eco-migrate/database/testing"
+	_ "github.com/maozi01/eco-migrate/source/file"
 )
 
 const (

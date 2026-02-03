@@ -29,9 +29,9 @@ import (
     "database/sql"
 
     _ "github.com/go-sql-driver/mysql"
-    "github.com/eco-migrate/migrate/v4"
-    "github.com/eco-migrate/migrate/v4/database/mysql"
-    _ "github.com/eco-migrate/migrate/v4/source/file"
+    "github.com/maozi01/eco-migrate"
+    "github.com/maozi01/eco-migrate/database/mysql"
+    _ "github.com/maozi01/eco-migrate/source/file"
 )
 
 func main() {

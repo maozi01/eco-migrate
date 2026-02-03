@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/eco-migrate/migrate/v4"
-	_ "github.com/eco-migrate/migrate/v4/database/stub" // TODO remove again
-	_ "github.com/eco-migrate/migrate/v4/source/file"
+	migrate "github.com/maozi01/eco-migrate"
+	_ "github.com/maozi01/eco-migrate/database/stub" // TODO remove again
+	_ "github.com/maozi01/eco-migrate/source/file"
 )
 
 var (

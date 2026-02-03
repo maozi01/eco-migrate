@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/eco-migrate/migrate/v4/source"
+	"github.com/maozi01/eco-migrate/source"
 )
 
 // driver is a migration source driver for reading migrations from

@@ -8,9 +8,9 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/eco-migrate/migrate/v4"
-	dt "github.com/eco-migrate/migrate/v4/database/testing"
-	_ "github.com/eco-migrate/migrate/v4/source/file"
+	migrate "github.com/maozi01/eco-migrate"
+	dt "github.com/maozi01/eco-migrate/database/testing"
+	_ "github.com/maozi01/eco-migrate/source/file"
 	_ "github.com/mutecomm/go-sqlcipher/v4"
 )
 

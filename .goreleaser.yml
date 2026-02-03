@@ -23,7 +23,7 @@ builds:
       - "-tags={{ .Env.DATABASE }} {{ .Env.SOURCE }}"
       - "-trimpath"
 nfpms:
-  - homepage: "https://github.com/eco-migrate/migrate/v4"
+  - homepage: "https://github.com/maozi01/eco-migrate"
     maintainer: "dhui@users.noreply.github.com"
     license: MIT
     description: "Database migrations"

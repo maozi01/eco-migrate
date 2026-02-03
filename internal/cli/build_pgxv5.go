@@ -3,5 +3,5 @@
 package cli
 
 import (
-	_ "github.com/eco-migrate/migrate/v4/database/pgx/v5"
+	_ "github.com/maozi01/eco-migrate/database/pgx/v5"
 )

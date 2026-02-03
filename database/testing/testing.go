@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/eco-migrate/migrate/v4/database"
+	"github.com/maozi01/eco-migrate/database"
 )
 
 // Test runs tests against database implementations.

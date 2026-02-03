@@ -12,14 +12,14 @@ import (
 	"time"
 
 	"github.com/dhui/dktest"
-	"github.com/eco-migrate/migrate/v4"
-	"github.com/eco-migrate/migrate/v4/dktesting"
+	migrate "github.com/maozi01/eco-migrate"
+	"github.com/maozi01/eco-migrate/dktesting"
 
 	_ "github.com/lib/pq"
 
-	dt "github.com/eco-migrate/migrate/v4/database/testing"
+	dt "github.com/maozi01/eco-migrate/database/testing"
 
-	_ "github.com/eco-migrate/migrate/v4/source/file"
+	_ "github.com/maozi01/eco-migrate/source/file"
 )
 
 const defaultPort = 5433

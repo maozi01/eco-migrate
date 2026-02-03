@@ -11,8 +11,8 @@ import (
 	nurl "net/url"
 	"sync/atomic"
 
-	"github.com/eco-migrate/migrate/v4"
-	"github.com/eco-migrate/migrate/v4/database"
+	migrate "github.com/maozi01/eco-migrate"
+	"github.com/maozi01/eco-migrate/database"
 	_ "github.com/nakagami/firebirdsql"
 )
 
@@ -138,7 +138,7 @@ func (f *Firebird) Run(migration io.Reader) error {
 func (f *Firebird) SetVersion(version int, dirty bool) error {
 	// Always re-write the schema version to prevent empty schema version
 	// for failed down migration on the first migration
-	// See: https://github.com/eco-migrate/migrate/v4/issues/330
+	// See: https://github.com/maozi01/eco-migratesues/330
 
 	// TODO: parameterize this SQL statement
 	//       https://firebirdsql.org/refdocs/langrefupd20-execblock.html

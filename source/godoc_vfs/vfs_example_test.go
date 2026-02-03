@@ -1,8 +1,8 @@
 package godoc_vfs_test
 
 import (
-	"github.com/eco-migrate/migrate/v4"
-	"github.com/eco-migrate/migrate/v4/source/godoc_vfs"
+	migrate "github.com/maozi01/eco-migrate"
+	"github.com/maozi01/eco-migrate/source/godoc_vfs"
 	"golang.org/x/tools/godoc/vfs/mapfs"
 )
 

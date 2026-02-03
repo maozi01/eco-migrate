@@ -6,11 +6,11 @@ import (
 	"errors"
 	"log"
 
-	"github.com/eco-migrate/migrate/v4"
+	"github.com/maozi01/eco-migrate"
 	"github.com/markbates/pkger"
 
-	_ "github.com/eco-migrate/migrate/v4/database/postgres"
-	_ "github.com/eco-migrate/migrate/v4/source/pkger"
+	_ "github.com/maozi01/eco-migrate/database/postgres"
+	_ "github.com/maozi01/eco-migrate/source/pkger"
 	_ "github.com/lib/pq"
 )
 

@@ -5,10 +5,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/eco-migrate/migrate/v4"
+	migrate "github.com/maozi01/eco-migrate"
 
-	dt "github.com/eco-migrate/migrate/v4/database/testing"
-	_ "github.com/eco-migrate/migrate/v4/source/file"
+	dt "github.com/maozi01/eco-migrate/database/testing"
+	_ "github.com/maozi01/eco-migrate/source/file"
 
 	"cloud.google.com/go/spanner/spannertest"
 	"github.com/stretchr/testify/assert"
