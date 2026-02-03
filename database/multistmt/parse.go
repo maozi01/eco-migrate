@@ -4,6 +4,7 @@ package multistmt
 import (
 	"bufio"
 	"bytes"
+	"fmt"
 	"io"
 )
 
@@ -15,32 +16,42 @@ var StartBufSize = 4096
 // from the multi-statement migration should be parsed and handled.
 type Handler func(migration []byte) bool
 
-func splitWithDelimiter(delimiter []byte) func(d []byte, atEOF bool) (int, []byte, error) {
-	return func(d []byte, atEOF bool) (int, []byte, error) {
-		// SplitFunc inspired by bufio.ScanLines() implementation
-		if atEOF {
-			if len(d) == 0 {
-				return 0, nil, nil
-			}
-			return len(d), d, nil
-		}
-		if i := bytes.Index(d, delimiter); i >= 0 {
-			return i + len(delimiter), d[:i+len(delimiter)], nil
-		}
-		return 0, nil, nil
-	}
-}
-
 // Parse parses the given multi-statement migration
 func Parse(reader io.Reader, delimiter []byte, maxMigrationSize int, h Handler) error {
-	scanner := bufio.NewScanner(reader)
-	scanner.Buffer(make([]byte, 0, StartBufSize), maxMigrationSize)
-	scanner.Split(splitWithDelimiter(delimiter))
-	for scanner.Scan() {
-		cont := h(scanner.Bytes())
-		if !cont {
-			break
+	bufReader := bufio.NewReaderSize(reader, 10*1024*1024)
+	var buf bytes.Buffer
+	buf.Grow(8 * 1024)
+	for {
+		part, err := bufReader.ReadSlice(delimiter[len(delimiter)-1])
+		if bytes.HasSuffix(part, delimiter) {
+			buf.Write(part)
+			sql := bytes.TrimSpace(buf.Bytes())
+			buf.Reset()
+			if len(sql) > 0 {
+				if !h(sql) {
+					return nil
+				}
+			}
+		} else {
+			buf.Write(part)
+		}
+		if err == bufio.ErrBufferFull {
+			continue
+		}
+		if err == io.EOF {
+			if buf.Len() > 0 {
+				sql := bytes.TrimSpace(buf.Bytes())
+				if len(sql) > 0 {
+					h(sql)
+				}
+			}
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+		if buf.Len() > maxMigrationSize {
+			return fmt.Errorf("migration statement exceeds max size %d", maxMigrationSize)
 		}
 	}
-	return scanner.Err()
 }
